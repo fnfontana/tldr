@@ -29,7 +29,7 @@ Is this intended? If so, just ignore this comment. Otherwise, please double-chec
 
 
 def post_comment(pr_id, body, once):
-    endpoint = BOT_URL + "/comment"
+    endpoint = f"{BOT_URL}/comment"
 
     if once:
         endpoint += "/once"
@@ -47,7 +47,7 @@ def post_comment(pr_id, body, once):
                 print(r.text, file=sys.stderr)
                 return False
     except requests.exceptions.RequestException as e:
-        print("Error sending data to tldr-bot:", str(e), file=sys.stderr)
+        print("Error sending data to tldr-bot:", e, file=sys.stderr)
         return False
 
     return True

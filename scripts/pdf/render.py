@@ -27,7 +27,7 @@ def main(loc, colorscheme):
     # Set up css style sheets
     csslist = ["basic.css"]
     if colorscheme != "basic":
-        csslist.append(colorscheme + ".css")
+        csslist.append(f"{colorscheme}.css")
 
     # A string that stores all pages in HTML format
     html = (
@@ -59,10 +59,10 @@ def main(loc, colorscheme):
                 text = inp.readlines()
                 # modify our page to have an H2 header, so that it is grouped under
                 # the H1 header for the directory
-                text[0] = "<h2 class='title-page'>" + text[0][2:] + "</h2>"
+                text[0] = f"<h2 class='title-page'>{text[0][2:]}</h2>"
                 for line in text:
                     if line.startswith(">"):
-                        line = "####" + line[1:]
+                        line = f"####{line[1:]}"
                     html += markdown.markdown(line)
             html += '<p style="page-break-before: always" ></p>'
             print(f"Rendered page {page_number} of the directory {operating_sys}")
